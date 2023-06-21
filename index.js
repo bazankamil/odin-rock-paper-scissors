@@ -64,34 +64,43 @@ function playRound(playerSelection, computerSelection) {
 
 //function game - 5 round game, first to get 5 points win
 
-//TODO
-//adding to score
-//if one of score == 5 - return message
-//bug- if wrong answer, playerSelection does not reset
-//bug- test one wrong answer then good
-//bug- if prompt cancaled (null) then all program broke
-
 function game() {
   let playerScore = 0;
   let computerScore = 0;
   let result = "";
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     console.log(i);
     computerSelection = getComputerChoice();
     getPlayerChoice = prompt("Lets play!").toLowerCase();
     result = playRound(playerSelection, computerSelection);
     if (result.includes("Lose")) {
       console.log("Lose");
+      computerScore++;
     } else if (result.includes("Win")) {
       console.log("Win");
-    } else {
+      playerScore++;
+    } else if (result.includes("Tie")) {
       console.log("Tie");
     }
-    // console.log(playerSelection);
-    // console.log(computerSelection);
+
+    console.log(`Player Score = ${playerScore}`);
+    console.log(`Player Score = ${computerScore}`);
+    if (playerScore === 5) {
+      console.log("You Win");
+      alert("You Win!");
+      break;
+    }
+    if (computerScore === 5) {
+      console.log("You Lose!");
+      alert("You Lose!");
+      break;
+    }
   }
 }
 
-console.log(playerSelection);
-console.log(computerSelection);
 game();
+
+//TODO:
+//bug- if wrong answer, playerSelection does not reset
+//bug- test one wrong answer then good- playerSelection should reset each loop?
+//bug- if prompt canceled (null) then all program broke
