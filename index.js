@@ -1,3 +1,33 @@
+//selectors
+
+const rockButtonElement = document.querySelector(".header__rock");
+const paperButtonElement = document.querySelector(".header__paper");
+const scissorsButtonElement = document.querySelector(".header__scissors");
+
+const resultDivElement = document.querySelector(".main__result");
+const scoreDivElement = document.querySelector(".main__score");
+const winnerDivElement = document.querySelector(".main__winner");
+
+let result;
+
+rockButtonElement.addEventListener("click", function () {
+  playerSelection = "rock";
+  playRound("rock", getComputerChoice());
+  games();
+});
+
+paperButtonElement.addEventListener("click", function () {
+  playerSelection = "paper";
+  playRound("paper", getComputerChoice());
+  games();
+});
+
+scissorsButtonElement.addEventListener("click", function () {
+  playerSelection = "scissors";
+  playRound("scissors", getComputerChoice());
+  games();
+});
+
 //function getComputerChoice random return rock paper scissors
 
 function getComputerChoice() {
@@ -13,78 +43,53 @@ function getComputerChoice() {
 
 let computerSelection = getComputerChoice();
 
-//function playerSelection that take player input from prompt
+//playerSelection from button
 
 let playerSelection;
-
-function getPlayerChoice() {
-  let answer;
-  answer = prompt("Lets play!").toLowerCase();
-  switch (answer) {
-    case "rock":
-      return (playerSelection = "rock");
-      break;
-    case "paper":
-      return (playerSelection = "paper");
-      break;
-    case "scissors":
-      return (playerSelection = "scissors");
-      break;
-    default:
-      alert("Wrong answer");
-      break;
-  }
-}
-
-playerSelection = getPlayerChoice();
 
 //function playRound - single round that take answer and printing a result
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == undefined) {
-    return "You input wrong answer";
+    return (result = "You input wrong answer");
   } else if (playerSelection == computerSelection) {
-    return "Tie!";
+    return (result = "Tie!");
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    return "You Lose! Paper beats Rock";
+    return (result = "You Lose! Paper beats Rock");
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    return "You Win! Rock beats Scissors";
+    return (result = "You Win! Rock beats Scissors");
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    return "You Win! Paper beats Rock";
+    return (result = "You Win! Paper beats Rock");
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    return "You Lose! Scissors beats Paper";
+    return (result = "You Lose! Scissors beats Paper");
   } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    return "You Win! Scissors beats Paper";
+    return (result = "You Win! Scissors beats Paper");
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    return "You Lose! Rock beats Scissors";
+    return (result = "You Lose! Rock beats Scissors");
   } else if (playerSelection == undefined) {
-    return "You input wrong answer";
+    return (result = "You input wrong answer");
   }
 }
 
 //function game - 5 round game, first to get 5 points win
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let result = "";
-  for (let i = 0; i < 20; i++) {
-    console.log(i);
-    computerSelection = getComputerChoice();
-    getPlayerChoice = prompt("Lets play!").toLowerCase();
-    result = playRound(playerSelection, computerSelection);
-    if (result.includes("Lose")) {
-      console.log("Lose");
-      computerScore++;
-    } else if (result.includes("Win")) {
-      console.log("Win");
-      playerScore++;
-    } else if (result.includes("Tie")) {
-      console.log("Tie");
-    }
+let playerScore = 0;
+let computerScore = 0;
 
+function games() {
+  if (result.includes("Lose")) {
+    console.log("Lose");
+    computerScore += 1;
+    console.log(`Computer Score = ${computerScore}`);
+  } else if (result.includes("Win")) {
+    console.log("Win");
+    playerScore += 1;
     console.log(`Player Score = ${playerScore}`);
-    console.log(`Player Score = ${computerScore}`);
+  } else if (result.includes("Tie")) {
+    console.log("Tie");
+  }
+}
+/*
     if (playerScore === 5) {
       console.log("You Win");
       alert("You Win!");
@@ -95,12 +100,17 @@ function game() {
       alert("You Lose!");
       break;
     }
-  }
-}
-
-game();
+*/
 
 //TODO:
 //bug- if wrong answer, playerSelection does not reset
 //bug- test one wrong answer then good- playerSelection should reset each loop?
 //bug- if prompt canceled (null) then all program broke
+
+//pod koniec rundy sprawdza, czy wynik jest rowny 5 i wtedy konczy i wyswietla wynik w 3 divie
+//na poczatku rundy sprawdza czy wynik jest rowny 5 jesli tak nie robi nic
+//result wyswietlany w 1 divie
+//score aktualizowany w 2 divie
+
+//stylizacja divov
+//stylizacja buttonow

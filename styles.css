@@ -1,0 +1,91 @@
+/* RESET */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::selection {
+  background-color: black;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62, 5%;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+button,
+textarea,
+select,
+ul {
+  font-family: inherit;
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: #222;
+}
+
+/* MAIN */
+
+html {
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.button {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10rem;
+}
+
+/* DIVS */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.div {
+  width: 60%;
+  border: 2px solid crimson;
+  text-align: center;
+  font-size: 2rem;
+}
