@@ -12,20 +12,17 @@ let result;
 
 rockButtonElement.addEventListener("click", function () {
   playerSelection = "rock";
-  playRound("rock", getComputerChoice());
-  games();
+  games(playRound("rock", getComputerChoice()));
 });
 
 paperButtonElement.addEventListener("click", function () {
   playerSelection = "paper";
-  playRound("paper", getComputerChoice());
-  games();
+  games(playRound("paper", getComputerChoice()));
 });
 
 scissorsButtonElement.addEventListener("click", function () {
   playerSelection = "scissors";
-  playRound("scissors", getComputerChoice());
-  games();
+  games(playRound("scissors", getComputerChoice()));
 });
 
 //function getComputerChoice random return rock paper scissors
@@ -76,41 +73,36 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
-function games() {
+function games(result) {
+  if (playerScore === 5 || computerScore === 5) {
+    alert("Game Over. Refresh browser to reset");
+    return;
+  }
   if (result.includes("Lose")) {
-    console.log("Lose");
+    resultDivElement.textContent = "You lose this match";
     computerScore += 1;
+    scoreDivElement.textContent = `Computer Score = ${computerScore} Player Score = ${playerScore}`;
     console.log(`Computer Score = ${computerScore}`);
   } else if (result.includes("Win")) {
-    console.log("Win");
+    resultDivElement.textContent = "You win this match!";
     playerScore += 1;
+    scoreDivElement.textContent = `Computer Score = ${computerScore} Player Score = ${playerScore}`;
     console.log(`Player Score = ${playerScore}`);
   } else if (result.includes("Tie")) {
-    console.log("Tie");
+    resultDivElement.textContent = "Tie!";
+  }
+  if (playerScore === 5) {
+    alert("You win the game!");
+    winnerDivElement.textContent = "Player Wins!";
+  }
+  if (computerScore === 5) {
+    alert("You lose the game!");
+    winnerDivElement.textContent = "Computer Wins!";
   }
 }
+
 /*
-    if (playerScore === 5) {
-      console.log("You Win");
-      alert("You Win!");
-      break;
-    }
-    if (computerScore === 5) {
-      console.log("You Lose!");
-      alert("You Lose!");
-      break;
-    }
+TODO: 
+-round counter
+-show computer selecion + round message 
 */
-
-//TODO:
-//bug- if wrong answer, playerSelection does not reset
-//bug- test one wrong answer then good- playerSelection should reset each loop?
-//bug- if prompt canceled (null) then all program broke
-
-//pod koniec rundy sprawdza, czy wynik jest rowny 5 i wtedy konczy i wyswietla wynik w 3 divie
-//na poczatku rundy sprawdza czy wynik jest rowny 5 jesli tak nie robi nic
-//result wyswietlany w 1 divie
-//score aktualizowany w 2 divie
-
-//stylizacja divov
-//stylizacja buttonow

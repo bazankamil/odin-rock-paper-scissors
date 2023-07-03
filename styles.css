@@ -56,6 +56,8 @@ body {
 
 html {
   font-family: "Times New Roman", Times, serif;
+  color: whitesmoke;
+  background-color: #181a1b;
 }
 
 /* HEADER */
@@ -71,6 +73,27 @@ html {
   width: 20rem;
   height: 20rem;
   border-radius: 10rem;
+}
+
+.header__rock {
+  background-image: url(./pictures/rock.jpg);
+  background-size: cover;
+  background-position-x: center;
+}
+
+.header__paper {
+  background-image: url(./pictures/paper.jpg);
+  background-size: cover;
+  background-position-x: center;
+}
+
+.header__scissors {
+  background-image: url(./pictures/scissors.jpg);
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
 /* DIVS */
